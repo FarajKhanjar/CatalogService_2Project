@@ -1,25 +1,25 @@
 package ajbc.webservice.rest.CatalogService.beans;
 
 import jakarta.ws.rs.QueryParam;
+import java.util.UUID;
 
-public class IOTThingFilterBean 
+public class DeviceFilterBeans 
 {
-	
-	@QueryParam("hardwareType") String type;
+	@QueryParam("hardwareType") String hardwareType;
 	@QueryParam("model") String model;
 	@QueryParam("manufacturer") String manufacturer;
 	
 	public String getHardwareType() {
-		return type;
+		return hardwareType;
 	}
-	public void setHardwareType(String type) {
-		this.type = type;
+	public void sethardwareType(String hardwareType) {
+		this.hardwareType = hardwareType;
 	}
-	public String getModle() {
+	public String getModel() {
 		return model;
 	}
-	public void setModle(String modle) {
-		this.model = modle;
+	public void setModel(String model) {
+		this.model = model;
 	}
 	public String getManufacturer() {
 		return manufacturer;
@@ -27,6 +27,5 @@ public class IOTThingFilterBean
 	public void setManufacturer(String manufacturer) {
 		this.manufacturer = manufacturer;
 	}
+
 }
-	
-	

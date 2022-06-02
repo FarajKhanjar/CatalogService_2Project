@@ -36,9 +36,9 @@ public class InventoryReport implements Runnable
 			
 			
 			writer.println(thingJson);
-			System.out.println("[Client] #("+ iot_thing.getID() +") sent to the [server]");
+			System.out.println("[Client] #{"+ iot_thing.getID() +"} sent to the [server]");
 			
-			System.out.println("[Server] says: " + bufferReader.readLine());
+			System.out.println(bufferReader.readLine());
 
 			
 		} catch (IOException e) 

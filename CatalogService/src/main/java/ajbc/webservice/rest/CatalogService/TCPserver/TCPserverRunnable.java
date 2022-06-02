@@ -37,17 +37,17 @@ public class TCPserverRunnable implements Runnable
 			Gson gson = new Gson();
 			IOT_Thing iot_thing = gson.fromJson(readJSO, IOT_Thing.class);
 			
-			System.out.println("IOT_thing " + iot_thing.getID()+ " received from the [Client]");
+			System.out.println("[Server] get IOT_thing #{" + iot_thing.getID()+ "}");
 			
 			String message ;
 			if(!DBservice.isEqual(iot_thing)) 
 			{
 				DBservice.addToDataBase(iot_thing);
-				message = "IOT thing " + iot_thing.getID() + " added to DB";
+				message = "[Server] added IOT_thing #{" + iot_thing.getID() + "} to the DataBase";
 			}
 			else {
 				DBservice.updateDataBase(iot_thing);
-				message = "Updatint devices is done for IOT_thing: " + iot_thing.getID();
+				message = "Updating devices is done for IOT_thing #{" + iot_thing.getID()+"}.";
 			}
 			
 			writer.println(message);
