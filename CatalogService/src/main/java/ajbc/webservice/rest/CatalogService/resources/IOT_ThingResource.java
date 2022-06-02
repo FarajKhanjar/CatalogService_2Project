@@ -45,21 +45,23 @@ public class IOT_ThingResource
 	}
 	
 	
-//	@GET
-//	public Response getIOTThingByProperties(@BeanParam IOTThingFilterBean iotThingFilterBean) 
-//	{
-//		IOT_Thing currentIOTthing = iotDBservice.getIOTThingByProperties(
-//				iotThingFilterBean.getHardwareType(),
-//				iotThingFilterBean.getModle(),
-//				iotThingFilterBean.getManufacturer());
-//		Status status = Status.OK;
-//		return Response.status(status).entity(currentIOTthing).build();
-//	}
+	@GET
+	@Path("/iotFiltering")
+	public Response getIOTThingByProperties(@BeanParam IOTThingFilterBean iotThingFilterBean) 
+	{
+		IOT_Thing currentIOTthing = iotDBservice.getIOTThingByProperties(
+				iotThingFilterBean.getHardwareType(),
+				iotThingFilterBean.getModle(),
+				iotThingFilterBean.getManufacturer());
+		Status status = Status.OK;
+		return Response.status(status).entity(currentIOTthing).build();
+	}
 	
 	
-//	//get iot by... 
+	//get iot by... 
 //	@GET
-//	public IOT_Thing getIOT_ThingByDevicesId(@PathParam("ID") UUID ID)
+//	@Path("/getIot")
+//	public List<IOT_Thing> getIOT_ThingByDevicesId(@PathParam("ID") UUID ID)
 //	{
 //		return iotDBservice.getIOTthingByDevicesId(ID);
 //		

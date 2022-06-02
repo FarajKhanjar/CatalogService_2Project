@@ -33,8 +33,10 @@ public class TCPserver
 				Socket clientSocket = serverSocket.accept();
 				executorService.execute(new TCPserverRunnable(clientSocket));
 			}
-		} catch (IOException e) {
-			System.err.println("[Server] failed to start on port: " + SERVER_PORT);
+		} 
+		catch (IOException e) 
+		{
+			System.err.println("[Server] failed to run on port: " + SERVER_PORT);
 			e.printStackTrace();
 		} 
 		finally 

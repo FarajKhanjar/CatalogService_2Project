@@ -25,12 +25,12 @@ public class DeviceResource
 {
 		DBService deviceDBservice = new DBService();
 		
-//		@GET
-//		public List<Device> getAllDevices() 
-//		{
-//
-//			return deviceDBservice.getAllDevices();
-//		}
+		@GET
+		public List<Device> getAllDevices() 
+		{
+
+			return deviceDBservice.getAllDevices();
+		}
 		
 		@GET
 		@Path("/{ID}")
@@ -42,28 +42,30 @@ public class DeviceResource
 	
 		//get Device by... 
 		@GET
+		@Path("/getDevice")
 		public List<Device> getDevicesByIOTthingId(@PathParam("ID") UUID ID)
 		{
 			return deviceDBservice.getDevicesByIOTthingId(ID);
 			
 		}
-//		
-//		@GET
-//		public Response getDevicesByProperties(@BeanParam DeviceFilterBeans DeviceFilterBea) 
-//		{
-//			Device currentDevice = deviceDBservice.getDevicesByProperties(
-//					DeviceFilterBea.getHardwareType(),DeviceFilterBea.getModel(),
-//					DeviceFilterBea.getManufacturer());
-//			Status status = Status.OK;
-//			return Response.status(status).entity(currentDevice).build();
-//		}
+		
+		@GET
+		@Path("/deviceFiltering")
+		public Response getDevicesByProperties(@BeanParam DeviceFilterBeans DeviceFilterBea) 
+		{
+			Device currentDevice = deviceDBservice.getDevicesByProperties(
+					DeviceFilterBea.getHardwareType(),DeviceFilterBea.getModel(),
+					DeviceFilterBea.getManufacturer());
+			Status status = Status.OK;
+			return Response.status(status).entity(currentDevice).build();
+		}
 		
 		
-//		@Path("/{ID}/IOTthings")
-//		public IOT_ThingResource getIOT_ThingResource() 
-//		{
-//			return new IOT_ThingResource();
-//		}
+		@Path("/{ID}/IOTthings")
+		public IOT_ThingResource getIOT_ThingResource() 
+		{
+			return new IOT_ThingResource();
+		}
 
 		
 }

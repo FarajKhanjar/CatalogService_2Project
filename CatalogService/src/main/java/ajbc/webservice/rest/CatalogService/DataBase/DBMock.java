@@ -31,7 +31,8 @@ public class DBMock
 		return instance;
 	}
 
-	private DBMock() {
+	private DBMock() 
+	{
 		iotThingsMap = new HashMap<UUID, IOT_Thing>();
 		devicesMap = new HashMap<UUID, Device>();
 

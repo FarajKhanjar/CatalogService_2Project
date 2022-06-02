@@ -43,7 +43,7 @@ public class InventoryReport implements Runnable
 			
 		} catch (IOException e) 
 		{
-/////
+			System.err.println("[Client] failed to send data.");
 			e.printStackTrace();
 		}
 

@@ -23,13 +23,13 @@ public class TCPclient
 //	public static List<IOTThing> newThingsList;
 //	private static int index =0 ;
 	
-	public static void main(String[] args) throws InterruptedException, UnknownHostException, IOException 
+	public static void main(String[] args) throws InterruptedException 
 	{
 		
 		final int SERVER_PORT = 8095;
 		final String SERVER_NAME = "localhost";
 
-		iotThingsList = createIOTThings();
+		iotThingsList = initIOTThingsDB();
 	//	newThingsList = new ArrayList<IOTThing>();
 		
 		System.out.println("Original IOT-things DataBase:");
@@ -46,8 +46,14 @@ public class TCPclient
 					InventoryReport report = new InventoryReport(iotThing,new Socket(SERVER_NAME,SERVER_PORT));
 					clientsService.execute(report);
 
-				} catch (IOException e) {
-				
+				} 
+				catch (UnknownHostException e) 
+				{
+					System.err.println("[Server] address could not be found.");
+					e.printStackTrace();
+				} 
+				catch (IOException e) {
+					System.err.println("[Client] failed to send data.");
 					e.printStackTrace();
 				}
 //				finally 
@@ -75,16 +81,16 @@ public class TCPclient
 		System.out.println();
 	}
 	
-	public static List<IOT_Thing> createIOTThings() 
+	public static List<IOT_Thing> initIOTThingsDB() 
 	{
 		List<IOT_Thing> thingsList = Arrays.asList(
-				new IOT_Thing(HardwareType.CONTROLLER,"V2X","communications",createListOfDevices1()),
-				new IOT_Thing(HardwareType.CONTROLLER,"BLE","wireless",createListOfDevices2()),
-				new IOT_Thing(HardwareType.CONTROLLER,"IoMT","Medical ",createListOfDevices3()));
+				new IOT_Thing(HardwareType.CONTROLLER,"V2X","communications",initListOfDBDevices1()),
+				new IOT_Thing(HardwareType.CONTROLLER,"BLE","wireless",initListOfDBDevices2()),
+				new IOT_Thing(HardwareType.CONTROLLER,"IoMT","Medical ",initListOfDBDevices3()));
 		return thingsList;
 	}
 	
-	public static List<Device> createListOfDevices1()
+	public static List<Device> initListOfDBDevices1()
 	{
 		devicesList = new ArrayList<Device>();
 		devicesList.add(new Device(HardwareType.SENSOR,"matrix","Biosensor"));
@@ -94,7 +100,7 @@ public class TCPclient
 		return devicesList;
 	}
 	
-	public static List<Device> createListOfDevices2()
+	public static List<Device> initListOfDBDevices2()
 	{
 		devicesList = new ArrayList<Device>();
 		devicesList.add(new Device(HardwareType.SENSOR,"matrix","Biosensor"));
@@ -102,7 +108,7 @@ public class TCPclient
 		return devicesList;
 	}
 	
-	public static List<Device> createListOfDevices3()
+	public static List<Device> initListOfDBDevices3()
 	{
 		devicesList = new ArrayList<Device>();
 		devicesList.add(new Device(HardwareType.SENSOR,"matrix","Biosensor"));
