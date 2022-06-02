@@ -4,7 +4,6 @@ import jakarta.ws.rs.QueryParam;
 
 public class IOTThingFilterBean 
 {
-	
 	@QueryParam("hardwareType") String type;
 	@QueryParam("model") String model;
 	@QueryParam("manufacturer") String manufacturer;
@@ -28,5 +27,3 @@ public class IOTThingFilterBean
 		this.manufacturer = manufacturer;
 	}
 }
-	
-	

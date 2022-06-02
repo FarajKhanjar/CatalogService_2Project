@@ -1,7 +1,6 @@
 package ajbc.webservice.rest.CatalogService.beans;
 
 import jakarta.ws.rs.QueryParam;
-import java.util.UUID;
 
 public class DeviceFilterBeans 
 {

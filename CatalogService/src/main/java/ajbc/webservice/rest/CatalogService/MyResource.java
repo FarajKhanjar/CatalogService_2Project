@@ -20,7 +20,7 @@ public class MyResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt() {
-        return "Hello! put your @Path word above.";
+        return "Hello! put your Root=-resource above. | @Path {/address}.";
     }
     
 

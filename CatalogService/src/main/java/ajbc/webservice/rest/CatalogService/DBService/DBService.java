@@ -159,22 +159,6 @@ public class DBService
 		return devices;
 		}
 	}
-
-//	public List<IOT_Thing> getIOTthingByDevicesId(UUID ID) 
-//	{
-//		List<IOT_Thing> iots = null;
-//		Device devices = devicesMap.get(ID);
-//		
-//		List<IOT_Thing> thingsList = iotThingsMap.values().stream().collect(Collectors.toList());
-//		for(IOT_Thing iotThing : thingsList) 
-//		{
-//			if(iotThing.getDevices().equals(devices)) 
-//			{
-//				iots.add(iotThing);
-//			}	
-//		}
-//		return iots;
-//	}
 	
 	public List<Device> getDevicesByType(HardwareType hardwareType) 
 	{
@@ -186,6 +170,18 @@ public class DBService
 			if(devices.isEmpty())
 				throw new NotMatchingDataException("given data doesn't match any Device");
 			return devices;
-	}	
-
+	}
+	
+/*	public List<IOT_Thing> getIOTthingByDevicesId(UUID ID) {
+		List<IOT_Thing> iots = null;
+		Device devices = devicesMap.get(ID);
+		List<IOT_Thing> thingsList = iotThingsMap.values().stream().collect(Collectors.toList());
+		for(IOT_Thing iotThing : thingsList) {
+			if(iotThing.getDevices().equals(devices)) {
+				iots.add(iotThing);
+			}	
+		}
+		return iots;
+	}
+*/
 }

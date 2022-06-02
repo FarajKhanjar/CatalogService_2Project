@@ -7,7 +7,7 @@ import ajbc.webservice.rest.CatalogService.DBService.DBService;
 import ajbc.webservice.rest.CatalogService.beans.DeviceFilterBeans;
 import ajbc.webservice.rest.CatalogService.models.Device;
 import ajbc.webservice.rest.CatalogService.models.HardwareType;
-import ajbc.webservice.rest.CatalogService.models.IOT_Thing;
+
 import jakarta.ws.rs.BeanParam;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -69,11 +69,11 @@ public class DeviceResource
 				return deviceDBservice.getDevicesByType(hardwareType);
 		}
 		
-//		@Path("/{ID}/IOTthings")
-//		public IOT_ThingResource getIOT_ThingResource() 
-//		{
-//			return new IOT_ThingResource();
-//		}
 
-		
+/*		@Path("/{ID}/IOTthings")
+		public IOT_ThingResource getIOT_ThingResource() 
+		{
+			return new IOT_ThingResource();
+		}
+*/
 }

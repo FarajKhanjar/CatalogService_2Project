@@ -5,15 +5,14 @@ import java.util.UUID;
 
 import ajbc.webservice.rest.CatalogService.DBService.DBService;
 import ajbc.webservice.rest.CatalogService.beans.IOTThingFilterBean;
-import ajbc.webservice.rest.CatalogService.models.HardwareType;
 import ajbc.webservice.rest.CatalogService.models.IOT_Thing;
+
 import jakarta.ws.rs.BeanParam;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
@@ -59,13 +58,12 @@ public class IOT_ThingResource
 	}
 	
 
-	//get iot by... 
-//	@GET
-//	@Path("/getIot")
-//	public List<IOT_Thing> getIOT_ThingByDevicesId(@PathParam("ID") UUID ID)
-//	{
-//		return iotDBservice.getIOTthingByDevicesId(ID);
-//		
-//	}
+/*
+	@GET
+	@Path("/getIot")
+	public List<IOT_Thing> getIOT_ThingByDevicesId(@PathParam("ID") UUID ID){
+		return iotDBservice.getIOTthingByDevicesId(ID);
+	}
+*/
 
 }

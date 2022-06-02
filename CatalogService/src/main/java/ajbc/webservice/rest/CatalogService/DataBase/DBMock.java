@@ -6,11 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
-import ajbc.webservice.rest.CatalogService.TCPclient.TCPclient;
-import ajbc.webservice.rest.CatalogService.TCPserver.TCPserver;
 import ajbc.webservice.rest.CatalogService.models.Device;
 import ajbc.webservice.rest.CatalogService.models.HardwareType;
 import ajbc.webservice.rest.CatalogService.models.IOT_Thing;
@@ -21,7 +17,6 @@ public class DBMock
 	private static Map<UUID, IOT_Thing> iotThingsMap;
 	public static Map<UUID, Device> devicesMap;
 
-	// public static Map<UUID,IOTThing> new_iotThings;
 
 	public static synchronized DBMock getInstance() 
 	{
@@ -97,16 +92,8 @@ public class DBMock
 		return devicesList;
 	}
 
-//	public static List<IOT_Thing> createListOfAllIOTThings() 
-//	{
-//		List<IOT_Thing> thingsList = Arrays.asList(
-//				new IOT_Thing(HardwareType.CONTROLLER,"V2X","communications",createListOfAllDevices()),
-//				new IOT_Thing(HardwareType.CONTROLLER,"BLE","wireless",createListOfAllDevices()),
-//				new IOT_Thing(HardwareType.CONTROLLER,"IoMT","Medical ",createListOfAllDevices()));
-//		return thingsList;
-//	}
 
-	public static List<Device> createListOfAllDevices() 
+/*	public static List<Device> initListOfAllDevices() 
 	{
 		List<Device> devicesList = new ArrayList<Device>();
 		devicesList.add(new Device(HardwareType.SENSOR, "matrix", "Biosensor"));
@@ -119,6 +106,17 @@ public class DBMock
 		devicesList.forEach(System.out::println);
 		return devicesList;
 	}
+*/
+	
+/*	public static List<IOT_Thing> initListOfAllIOTThings() 
+	{
+		List<IOT_Thing> thingsList = Arrays.asList(
+				new IOT_Thing(HardwareType.CONTROLLER,"V2X","communications",createListOfAllDevices()),
+				new IOT_Thing(HardwareType.CONTROLLER,"BLE","wireless",createListOfAllDevices()),
+				new IOT_Thing(HardwareType.CONTROLLER,"IoMT","Medical ",createListOfAllDevices()));
+		return thingsList;
+	}
+*/
 
 	public Map<UUID, IOT_Thing> getIotThings() 
 	{

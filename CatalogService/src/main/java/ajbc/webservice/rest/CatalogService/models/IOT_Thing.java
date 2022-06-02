@@ -24,7 +24,10 @@ public class IOT_Thing extends Hardware
 	
 	public void simulateInventoryChange() 
 	{
-		removingValuefromMap();
+		if(devices.isEmpty()==false) 
+		{
+			removingValuefromMap();
+		}
 		addValueToMap();
 	}
 	
