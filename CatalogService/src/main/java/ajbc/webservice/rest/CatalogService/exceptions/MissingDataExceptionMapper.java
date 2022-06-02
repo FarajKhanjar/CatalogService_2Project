@@ -13,7 +13,7 @@ public class MissingDataExceptionMapper implements ExceptionMapper<MissingDataEx
 	@Override
 	public Response toResponse(MissingDataException exception) 
 	{
-		ErrorMassage errMessage = new ErrorMassage(exception.getMessage(), "farajkhanjar@gmail.com",  InternalErrorCode.INVALID_ID);
+		ErrorMessage errMessage = new ErrorMessage(exception.getMessage(), "farajkhanjar@gmail.com",  InternalErrorCode.INVALID_ID);
 		return Response.status(Status.NOT_FOUND).entity(errMessage).build();
 	}
 

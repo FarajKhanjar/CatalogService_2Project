@@ -12,7 +12,7 @@ public class NotMatchingDataExceptionMapper implements ExceptionMapper<NotMatchi
 	@Override
 	public Response toResponse(NotMatchingDataException e) 
 	{
-		ErrorMassage errorMessage = new ErrorMassage(
+		ErrorMessage errorMessage = new ErrorMessage(
 				e.getMessage(), "farajkhanjar@gmail.com", InternalErrorCode.UNMATCHED_DATA);
 		return Response.status(Status.NOT_FOUND).entity(errorMessage).build();
 	}

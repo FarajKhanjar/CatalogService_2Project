@@ -28,7 +28,7 @@ public class IOT_Thing extends Hardware
 		addValueToMap();
 	}
 	
-	private void removingValuefromMap() 
+	public void removingValuefromMap() 
 	{
 		int size = devices.size();
 		int index = (int)(Math.random()*size);
@@ -36,7 +36,7 @@ public class IOT_Thing extends Hardware
 		devices.remove(index);
 	}
 	
-	private void addValueToMap() 
+	public void addValueToMap() 
 	{
 		int size = devices.size();
 		int index = (int)(Math.random()*size);
