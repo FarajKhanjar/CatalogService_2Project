@@ -15,7 +15,7 @@ import ajbc.webservice.rest.CatalogService.models.IOT_Thing;
 public class TCPserverRunnable implements Runnable 
 {
 	private DBService DBservice;
-	
+	private boolean stopped;
 	private Socket clientSocket;
 
 	
@@ -31,7 +31,7 @@ public class TCPserverRunnable implements Runnable
 		try(BufferedReader bufferReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 				PrintWriter writer = new PrintWriter(clientSocket.getOutputStream(), true);)
 		{
-			
+
 			JsonReader readJSO = new JsonReader(bufferReader);
 			
 			Gson gson = new Gson();
@@ -39,7 +39,7 @@ public class TCPserverRunnable implements Runnable
 			
 			System.out.println("[Server] get IOT_thing #{" + iot_thing.getID()+ "}");
 			
-			String message ;
+			String message;
 			if(!DBservice.isEqual(iot_thing)) 
 			{
 				DBservice.addToDataBase(iot_thing);
@@ -58,5 +58,9 @@ public class TCPserverRunnable implements Runnable
 		}
 
 	}
-
+	
+	public void kill() 
+	{
+		stopped = true;
+	}
 }

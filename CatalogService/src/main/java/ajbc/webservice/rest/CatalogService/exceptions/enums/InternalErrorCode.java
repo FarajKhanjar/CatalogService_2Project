@@ -3,6 +3,6 @@ package ajbc.webservice.rest.CatalogService.exceptions.enums;
 public enum InternalErrorCode 
 {
 	INVALID_ID,
-	NOT_MATCHED,
+	UNMATCHED_DATA,
 	NOT_FOUND;
 }

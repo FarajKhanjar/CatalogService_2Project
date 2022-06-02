@@ -18,19 +18,14 @@ import ajbc.webservice.rest.CatalogService.models.IOT_Thing;
 public class TCPclient 
 {
 	private static List<Device> devicesList;
-	private static List<IOT_Thing> iotThingsList;
-	
-//	public static List<IOTThing> newThingsList;
-//	private static int index =0 ;
+	private static List<IOT_Thing> iotThingsList;	
 	
 	public static void main(String[] args) throws InterruptedException 
 	{
-		
 		final int SERVER_PORT = 8095;
 		final String SERVER_NAME = "localhost";
 
 		iotThingsList = initIOTThingsDB();
-	//	newThingsList = new ArrayList<IOTThing>();
 		
 		System.out.println("Original IOT-things DataBase:");
 		System.out.println("-----------------------------");
@@ -56,11 +51,7 @@ public class TCPclient
 					System.err.println("[Client] failed to send data.");
 					e.printStackTrace();
 				}
-//				finally 
-//				{
-//					newThingsList.add(thingsList.get(index));
-//					index++;
-//				}
+
 			});
 			
 			printStatusDB("IOT things");
@@ -118,6 +109,4 @@ public class TCPclient
 		devicesList.add(new Device(HardwareType.ACTUATOR,"HDR5","Hydraulic"));
 		return devicesList;
 	}
-	
-
 }

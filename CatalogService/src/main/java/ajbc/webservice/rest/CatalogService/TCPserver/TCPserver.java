@@ -7,25 +7,23 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import ajbc.webservice.rest.CatalogService.DBService.DBService;
-import ajbc.webservice.rest.CatalogService.DataBase.DBMock;
 
-public class TCPserver 
+public class TCPserver extends Thread
 {
+	ExecutorService executorService;
 	private final int SERVER_PORT;
 
 	public TCPserver(int SERVER_PORT) 
 	{
 		this.SERVER_PORT = SERVER_PORT;
+		executorService = Executors.newCachedThreadPool();
 	}
 
-	public void runTCPserver() throws InterruptedException 
+	@Override
+	public void run() 
 	{
-		ExecutorService executorService = Executors.newCachedThreadPool();
-
 		try (ServerSocket serverSocket = new ServerSocket(SERVER_PORT);) 
 		{
-
 			System.out.println("[Server] started on port: " + SERVER_PORT);
 
 			while (true) 
@@ -39,10 +37,16 @@ public class TCPserver
 			System.err.println("[Server] failed to run on port: " + SERVER_PORT);
 			e.printStackTrace();
 		} 
-		finally 
+	}
+	
+	public void kill() 
+	{
+		try 
 		{
 			executorService.shutdown();
 			executorService.awaitTermination(3, TimeUnit.SECONDS);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 
 	}
@@ -52,7 +56,7 @@ public class TCPserver
 		
 		int serverPort = 8095;
 		TCPserver inventoryServer = new TCPserver(serverPort);
-		inventoryServer.runTCPserver();
+		inventoryServer.run();
 
 	}
 
