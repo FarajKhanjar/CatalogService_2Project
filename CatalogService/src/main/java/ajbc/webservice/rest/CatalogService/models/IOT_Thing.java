@@ -46,6 +46,7 @@ public class IOT_Thing extends Hardware
 		System.out.println("[Client] ask to add a new device to DB in #"+index);
 		devices.add(index, new Device(HardwareType.ACTUATOR,"SMAs","Thermal"));
 	}
+	
 
 	@Override
 	public String toString() 

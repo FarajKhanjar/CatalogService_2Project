@@ -11,6 +11,7 @@ import ajbc.webservice.rest.CatalogService.DBService.DBService;
 import ajbc.webservice.rest.CatalogService.DataBase.DBMock;
 import ajbc.webservice.rest.CatalogService.exceptions.MissingDataException;
 import ajbc.webservice.rest.CatalogService.models.Device;
+import ajbc.webservice.rest.CatalogService.models.HardwareType;
 
 public class DeviceResourceTest 
 {
@@ -35,6 +36,17 @@ public class DeviceResourceTest
 		Device devicesOfDB = myDB.getDevices().get(currentId);
 
 		assertEquals(devicesOfDB, devicesOfService);
+	}
+	
+	@Test
+	public void getDevicesByTypeTest()
+	{
+		assertEquals(0, (myService.getDevicesByType(HardwareType.CONTROLLER)).size());
+		assertEquals(5, (myService.getDevicesByType(HardwareType.ACTUATOR)).size());
+		assertEquals(6, (myService.getDevicesByType(HardwareType.SENSOR).size()));
+		
+		assertThrows(IllegalArgumentException.class, 
+				()->myService.getDevicesByType(HardwareType.valueOf("Device can't be like this type")));
 	}
 	
 	@Test

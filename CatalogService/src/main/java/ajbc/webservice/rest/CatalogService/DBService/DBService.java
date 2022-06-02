@@ -45,7 +45,6 @@ public class DBService
 
 		if (iotThingsMap.containsKey(iot_thing.getID())) 
 		{
-
 			List<Device> originalDevices = iotThingsMap.get(iot_thing.getID()).getDevices();
 			List<Device> newDevices = iot_thing.getDevices();
 
@@ -84,6 +83,14 @@ public class DBService
 			throw new MissingDataException("In this DB, There is not any [device] of ID=#{" + ID + "}");
 		return devicesMap.get(ID);
 	}
+	
+	public List<Device> getDevicesByType(HardwareType hardwareType) 
+	{
+		return devicesMap.values().stream()
+				.filter(device->device.getHardwareType()
+						.equals(hardwareType)).toList();
+	}
+	
 
 	public IOT_Thing getIOTThingByProperties(String hardwareType, String model, String manufacturer) 
 	{
@@ -102,7 +109,7 @@ public class DBService
 		}
 		} catch(IllegalArgumentException e) 
 		{
-			System.err.println("[Error] this method has been passed an illegal argument.");
+			System.err.println("[Error] this method has been passed an illegal argument - invaild object.");
 			e.printStackTrace();
 		}
 		
@@ -110,8 +117,6 @@ public class DBService
 			throw new NotMatchingDataException("There is not any equal [IOT_thing] to this properties in DB.");
 		else
 			return iot_Thing;
-
-
 	}
 
 	public Device getDevicesByProperties(String hardwareType, String model, String manufacturer) 
@@ -119,9 +124,7 @@ public class DBService
 		Device handelDevice = null;	
 		try
 		{
-			
-		
-		HardwareType type = HardwareType.valueOf(hardwareType.toUpperCase());
+			HardwareType type = HardwareType.valueOf(hardwareType.toUpperCase());
 
 		List<Device> devicesList = devicesMap.values().stream().collect(Collectors.toList());
 		for (Device device : devicesList) 
@@ -158,18 +161,6 @@ public class DBService
 
 		return devices;
 		}
-	}
-	
-	public List<Device> getDevicesByType(HardwareType hardwareType) 
-	{
-			List<Device> devices = devicesMap.values().stream().collect(Collectors.toList());
-			//HardwareType type = HardwareType.valueOf(hardwareType.toUpperCase());
-			
-			devices = devices.stream().filter(device -> device.getHardwareType()==hardwareType)
-					.collect(Collectors.toList());
-			if(devices.isEmpty())
-				throw new NotMatchingDataException("given data doesn't match any Device");
-			return devices;
 	}
 	
 /*	public List<IOT_Thing> getIOTthingByDevicesId(UUID ID) {
