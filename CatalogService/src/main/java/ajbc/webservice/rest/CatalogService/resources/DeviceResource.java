@@ -6,6 +6,7 @@ import java.util.UUID;
 import ajbc.webservice.rest.CatalogService.DBService.DBService;
 import ajbc.webservice.rest.CatalogService.beans.DeviceFilterBeans;
 import ajbc.webservice.rest.CatalogService.models.Device;
+import ajbc.webservice.rest.CatalogService.models.HardwareType;
 import ajbc.webservice.rest.CatalogService.models.IOT_Thing;
 import jakarta.ws.rs.BeanParam;
 import jakarta.ws.rs.Consumes;
@@ -13,6 +14,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
@@ -39,8 +41,7 @@ public class DeviceResource
 			return deviceDBservice.getDeviceByID(ID);
 		}
 		
-	
-		//get Device by... 
+ 
 		@GET
 		@Path("/getDevice")
 		public List<Device> getDevicesByIOTthingId(@PathParam("ID") UUID ID)
@@ -61,11 +62,18 @@ public class DeviceResource
 		}
 		
 		
-		@Path("/{ID}/IOTthings")
-		public IOT_ThingResource getIOT_ThingResource() 
+		@GET
+		@Path("/getByType")
+		public List<Device> getDevicesByType(@QueryParam("hardwareType") HardwareType hardwareType)
 		{
-			return new IOT_ThingResource();
+				return deviceDBservice.getDevicesByType(hardwareType);
 		}
+		
+//		@Path("/{ID}/IOTthings")
+//		public IOT_ThingResource getIOT_ThingResource() 
+//		{
+//			return new IOT_ThingResource();
+//		}
 
 		
 }

@@ -147,7 +147,7 @@ public class DBService
 
 	public List<Device> getDevicesByIOTthingId(UUID ID) 
 	{
-		if(!devicesMap.containsKey(ID))
+		if(!iotThingsMap.containsKey(ID))
 			throw new MissingDataException("There is not any equal [device] in  this properties in DB.");
 		else
 		{
@@ -175,5 +175,17 @@ public class DBService
 //		}
 //		return iots;
 //	}
+	
+	public List<Device> getDevicesByType(HardwareType hardwareType) 
+	{
+			List<Device> devices = devicesMap.values().stream().collect(Collectors.toList());
+			//HardwareType type = HardwareType.valueOf(hardwareType.toUpperCase());
+			
+			devices = devices.stream().filter(device -> device.getHardwareType()==hardwareType)
+					.collect(Collectors.toList());
+			if(devices.isEmpty())
+				throw new NotMatchingDataException("given data doesn't match any Device");
+			return devices;
+	}	
 
 }

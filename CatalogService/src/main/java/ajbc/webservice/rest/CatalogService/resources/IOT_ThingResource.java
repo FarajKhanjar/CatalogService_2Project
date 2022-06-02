@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import ajbc.webservice.rest.CatalogService.DBService.DBService;
 import ajbc.webservice.rest.CatalogService.beans.IOTThingFilterBean;
+import ajbc.webservice.rest.CatalogService.models.HardwareType;
 import ajbc.webservice.rest.CatalogService.models.IOT_Thing;
 import jakarta.ws.rs.BeanParam;
 import jakarta.ws.rs.Consumes;
@@ -57,7 +58,7 @@ public class IOT_ThingResource
 		return Response.status(status).entity(currentIOTthing).build();
 	}
 	
-	
+
 	//get iot by... 
 //	@GET
 //	@Path("/getIot")
