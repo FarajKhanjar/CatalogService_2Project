@@ -10,29 +10,29 @@ import org.junit.Test;
 import ajbc.webservice.rest.CatalogService.DBService.DBService;
 import ajbc.webservice.rest.CatalogService.DataBase.DBMock;
 import ajbc.webservice.rest.CatalogService.exceptions.MissingDataException;
-import ajbc.webservice.rest.CatalogService.models.Device;
+import ajbc.webservice.rest.CatalogService.models.IOT_Thing;
 
-public class DeviceResourceTest 
+public class IOT_ThingResourceTest 
 {
 	private DBService myService = new DBService();
 	private DBMock myDB = DBMock.getInstance();
 	
 	@Test
-	public void getAllDevicesTest()
+	public void getAllIOTThingsTest()
 	{
-		List<Device> devicesOfService = myService.getAllDevices();
-		List<Device> devicesOfDB = myDB.getDevices().values().stream().toList();
-		assertEquals(devicesOfDB, devicesOfService);
+		List<IOT_Thing> serviceThings = myService.getAllIOTThings();
+		List<IOT_Thing> dbThings = myDB.getIotThings().values().stream().toList();
+		assertEquals(dbThings, serviceThings);
 		
 	}
 	
 	@Test
-	public void getDeviceByIdTest()
+	public void getIOTThingByIdTest()
 	{
-		List<UUID> listOfId = myDB.getDevices().keySet().stream().toList();
+		List<UUID> listOfId = myDB.getIotThings().keySet().stream().toList();
 		UUID currentId = listOfId.get(0);
-		Device devicesOfService = myService.getDeviceByID(currentId);
-		Device devicesOfDB = myDB.getDevices().get(currentId);
+		IOT_Thing devicesOfService = myService.getIOTThingByID(currentId);
+		IOT_Thing devicesOfDB = myDB.getIotThings().get(currentId);
 
 		assertEquals(devicesOfDB, devicesOfService);
 	}
@@ -42,6 +42,6 @@ public class DeviceResourceTest
 	{
 		UUID randID = UUID.randomUUID();
 		assertThrows(MissingDataException.class,
-				()->myService.getDeviceByID(randID));
+				()->myService.getIOTThingByID(randID));		
 	}
 }

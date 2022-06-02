@@ -4,10 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import ajbc.webservice.rest.CatalogService.DBService.DBService;
@@ -25,8 +23,13 @@ class DBserviceTest
 	@Test
 	void constructorTest() 
 	{
-		assertEquals(DBMock.getInstance().getIotThings().values().stream().collect(Collectors.toList()),dbService.getAllIOTThings());
-		assertEquals(DBMock.getInstance().getDevices().values().stream().collect(Collectors.toList()), dbService.getAllDevices());
+		assertEquals(DBMock.getInstance().getIotThings()
+				     .values().stream().collect(Collectors.toList())
+				     ,dbService.getAllIOTThings());
+		
+		assertEquals(DBMock.getInstance().getDevices()
+				     .values().stream().collect(Collectors.toList()),
+				     dbService.getAllDevices());
 	}
 	
 	@Test
