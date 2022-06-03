@@ -13,6 +13,11 @@ import ajbc.webservice.rest.CatalogService.models.Device;
 import ajbc.webservice.rest.CatalogService.models.HardwareType;
 import ajbc.webservice.rest.CatalogService.models.IOT_Thing;
 
+/**
+ * In this class, the DBServer manages the data, its throws Exceptions for the
+ * client in case there is an error searching or filtering.
+ * @author Faraj
+ */
 public class DBService 
 {
 	private volatile Map<UUID, IOT_Thing> iotThingsMap;
@@ -72,48 +77,43 @@ public class DBService
 
 	public IOT_Thing getIOTThingByID(UUID ID) 
 	{
-		if(iotThingsMap.get(ID)==null)
+		if (iotThingsMap.get(ID) == null)
 			throw new MissingDataException("In this DB, There is not any [IOT_Thing] of ID=#{ " + ID + "}");
 		return iotThingsMap.get(ID);
 	}
 
 	public Device getDeviceByID(UUID ID) 
 	{
-		if(devicesMap.get(ID)==null)
+		if (devicesMap.get(ID) == null)
 			throw new MissingDataException("In this DB, There is not any [device] of ID=#{" + ID + "}");
 		return devicesMap.get(ID);
 	}
-	
+
 	public List<Device> getDevicesByType(HardwareType hardwareType) 
 	{
-		return devicesMap.values().stream()
-				.filter(device->device.getHardwareType()
-						.equals(hardwareType)).toList();
+		return devicesMap.values().stream().filter(device -> device.getHardwareType().equals(hardwareType)).toList();
 	}
-	
 
 	public IOT_Thing getIOTThingByProperties(String hardwareType, String model, String manufacturer) 
 	{
-		IOT_Thing iot_Thing = null;		
-		try{
+		IOT_Thing iot_Thing = null;
+		try {
 
-		HardwareType type = HardwareType.valueOf(hardwareType.toUpperCase());
-		List<IOT_Thing> thingsList = iotThingsMap.values().stream().collect(Collectors.toList());
-		for (IOT_Thing iotThing : thingsList) 
-		{
-			if (iotThing.getModel().equalsIgnoreCase(model) && iotThing.getHardwareType() == type
-					&& iotThing.getManufacturer().equalsIgnoreCase(manufacturer)) 
-			{
-				iot_Thing=iotThing;
+			HardwareType type = HardwareType.valueOf(hardwareType.toUpperCase());
+			List<IOT_Thing> thingsList = iotThingsMap.values().stream().collect(Collectors.toList());
+			for (IOT_Thing iotThing : thingsList) {
+				if (iotThing.getModel().equalsIgnoreCase(model) && iotThing.getHardwareType() == type
+						&& iotThing.getManufacturer().equalsIgnoreCase(manufacturer)) {
+					iot_Thing = iotThing;
+				}
 			}
-		}
-		} catch(IllegalArgumentException e) 
+		} catch (IllegalArgumentException e) 
 		{
 			System.err.println("[Error] this method has been passed an illegal argument - invaild object.");
 			e.printStackTrace();
 		}
-		
-		if(iot_Thing.equals(null))
+
+		if (iot_Thing.equals(null))
 			throw new NotMatchingDataException("There is not any equal [IOT_thing] to this properties in DB.");
 		else
 			return iot_Thing;
@@ -121,28 +121,24 @@ public class DBService
 
 	public Device getDevicesByProperties(String hardwareType, String model, String manufacturer) 
 	{
-		Device handelDevice = null;	
-		try
+		Device handelDevice = null;
+		try 
 		{
 			HardwareType type = HardwareType.valueOf(hardwareType.toUpperCase());
 
-		List<Device> devicesList = devicesMap.values().stream().collect(Collectors.toList());
-		for (Device device : devicesList) 
-		{
-			if (device.getModel().equalsIgnoreCase(model) && device.getHardwareType() == type
-					&& device.getManufacturer().equalsIgnoreCase(manufacturer)) 
-			{
-				handelDevice=device;
+			List<Device> devicesList = devicesMap.values().stream().collect(Collectors.toList());
+			for (Device device : devicesList) {
+				if (device.getModel().equalsIgnoreCase(model) && device.getHardwareType() == type
+						&& device.getManufacturer().equalsIgnoreCase(manufacturer)) {
+					handelDevice = device;
+				}
 			}
-		} 
-		} 
-		catch(IllegalArgumentException e) 
-		{
+		} catch (IllegalArgumentException e) {
 			System.err.println("[Error] this method has been passed an illegal argument.");
 			e.printStackTrace();
 		}
-		
-		if(handelDevice.equals(null))
+
+		if (handelDevice.equals(null))
 			throw new NotMatchingDataException("There is not any [device] in [IOT_thing] DB.");
 		else
 			return handelDevice;
@@ -150,29 +146,21 @@ public class DBService
 
 	public List<Device> getDevicesByIOTthingId(UUID ID) 
 	{
-		if(!iotThingsMap.containsKey(ID))
+		if (!iotThingsMap.containsKey(ID))
 			throw new MissingDataException("There is not any equal [device] in  this properties in DB.");
-		else
-		{
-		
-		List<Device> devices = null;
-		IOT_Thing iotThings = iotThingsMap.get(ID);
-		devices = iotThings.getDevices();
+		else {
+			List<Device> devices = null;
+			IOT_Thing iotThings = iotThingsMap.get(ID);
+			devices = iotThings.getDevices();
+			return devices;
+		}
+	}
 
-		return devices;
-		}
-	}
-	
-/*	public List<IOT_Thing> getIOTthingByDevicesId(UUID ID) {
-		List<IOT_Thing> iots = null;
-		Device devices = devicesMap.get(ID);
-		List<IOT_Thing> thingsList = iotThingsMap.values().stream().collect(Collectors.toList());
-		for(IOT_Thing iotThing : thingsList) {
-			if(iotThing.getDevices().equals(devices)) {
-				iots.add(iotThing);
-			}	
-		}
-		return iots;
-	}
-*/
+	/*
+	 * public List<IOT_Thing> getIOTthingByDevicesId(UUID ID) { List<IOT_Thing> iots
+	 * = null; Device devices = devicesMap.get(ID); List<IOT_Thing> thingsList =
+	 * iotThingsMap.values().stream().collect(Collectors.toList()); for(IOT_Thing
+	 * iotThing : thingsList) { if(iotThing.getDevices().equals(devices)) {
+	 * iots.add(iotThing); } } return iots; }
+	 */
 }

@@ -2,6 +2,10 @@ package ajbc.webservice.rest.CatalogService.beans;
 
 import jakarta.ws.rs.QueryParam;
 
+/**
+ * Through this class the HTTP server do the filtering or resourcing.
+ * @author Faraj
+ */
 public class DeviceFilterBeans 
 {
 	@QueryParam("hardwareType") String hardwareType;

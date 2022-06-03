@@ -12,6 +12,9 @@ import com.google.gson.stream.JsonReader;
 import ajbc.webservice.rest.CatalogService.DBService.DBService;
 import ajbc.webservice.rest.CatalogService.models.IOT_Thing;
 
+/*
+ * By the TCP client (reports) sends JSON-objects, the TCPserverRunnable parse & pass to the DBservice. 
+ */
 public class TCPserverRunnable implements Runnable 
 {
 	private DBService DBservice;

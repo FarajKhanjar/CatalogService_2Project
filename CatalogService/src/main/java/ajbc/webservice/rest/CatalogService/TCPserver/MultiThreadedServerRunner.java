@@ -4,6 +4,10 @@ import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
 
+/**
+ * The TCP server and the "Tomcat" server needs to sync/merges the actions by MultiThraededServerRunner.
+ * @author Faraj
+ */
 @WebListener
 public class MultiThreadedServerRunner implements ServletContextListener {
 

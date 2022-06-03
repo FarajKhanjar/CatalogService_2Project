@@ -11,6 +11,11 @@ import ajbc.webservice.rest.CatalogService.models.Device;
 import ajbc.webservice.rest.CatalogService.models.HardwareType;
 import ajbc.webservice.rest.CatalogService.models.IOT_Thing;
 
+/**
+ * In this class, the app holds the database by two basic maps: {iotThingsMap} & {devicesMap}
+ * Also its manage and simulate DB.
+ * @author Faraj
+ */
 public class DBMock 
 {
 	private static DBMock instance = null;
@@ -20,7 +25,7 @@ public class DBMock
 
 	public static synchronized DBMock getInstance() 
 	{
-		// singalton
+		// Singleton
 		if (instance == null)
 			instance = new DBMock();
 		return instance;

@@ -2,6 +2,10 @@ package ajbc.webservice.rest.CatalogService.exceptions;
 
 import ajbc.webservice.rest.CatalogService.exceptions.enums.InternalErrorCode;
 
+/**
+ * By this class, the ExceptionMapper throws error message on the HTTP server in a JSON template.
+ * @author Faraj
+ */
 public class ErrorMessage 
 {
 	private String errMes;

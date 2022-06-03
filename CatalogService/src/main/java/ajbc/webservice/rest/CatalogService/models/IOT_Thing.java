@@ -2,6 +2,12 @@ package ajbc.webservice.rest.CatalogService.models;
 
 import java.util.List;
 
+/**
+ * In this class we create the IOT_Thing object,
+ * its extends Hardware Class.
+ * any IOT_Thing have also a devices list (it could be empty).
+ * @author Faraj
+ */
 public class IOT_Thing extends Hardware
 {
 	private List<Device> devices;
@@ -53,5 +59,4 @@ public class IOT_Thing extends Hardware
 	{
 		return super.toString()+"IOT_Thing [devices=" + devices + "]";
 	}
-
 }

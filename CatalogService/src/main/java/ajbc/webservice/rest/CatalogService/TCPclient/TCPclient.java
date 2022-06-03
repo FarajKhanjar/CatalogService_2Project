@@ -15,6 +15,11 @@ import ajbc.webservice.rest.CatalogService.models.Device;
 import ajbc.webservice.rest.CatalogService.models.HardwareType;
 import ajbc.webservice.rest.CatalogService.models.IOT_Thing;
 
+/**
+ * TCP client manage basic data to simulate, and sends a JSON to the server
+ * @author Faraj
+ *
+ */
 public class TCPclient 
 {
 	private static List<Device> devicesList;

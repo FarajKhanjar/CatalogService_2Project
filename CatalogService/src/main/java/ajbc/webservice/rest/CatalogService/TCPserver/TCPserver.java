@@ -7,7 +7,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-
+/**
+ * The TCP server is waiting for the client, listen to the client port,
+ * and manages it by executing ServerSocketThread, also send and write messages for the client.
+ * @author Faraj
+ */
 public class TCPserver extends Thread
 {
 	ExecutorService executorService;

@@ -1,5 +1,11 @@
 package ajbc.webservice.rest.CatalogService.models;
 
+/**
+ * In this class we create the Device object,
+ * its extends Hardware Class.
+ * Devices can be sensors or actuators.
+ * @author Faraj
+ */
 public class Device extends Hardware
 {
 

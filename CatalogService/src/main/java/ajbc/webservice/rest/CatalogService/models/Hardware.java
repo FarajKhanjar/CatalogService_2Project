@@ -2,6 +2,10 @@ package ajbc.webservice.rest.CatalogService.models;
 
 import java.util.UUID;
 
+/**
+ * Hardware is a abstract class that give the IOT_Things and Devices the basic fields. 
+ * @author Faraj
+ */
 public abstract class Hardware 
 {
 	private final UUID ID;

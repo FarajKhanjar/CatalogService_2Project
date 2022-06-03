@@ -17,6 +17,10 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 
+/**
+ * The IOT_ThingResource sends from the DB current IOTthings and info about it,
+ * like get value or list by ID or any other properties.
+ */
 @Path("IOTthings")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)

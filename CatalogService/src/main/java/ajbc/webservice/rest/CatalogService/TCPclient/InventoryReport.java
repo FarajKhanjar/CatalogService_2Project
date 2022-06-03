@@ -11,6 +11,11 @@ import com.google.gson.Gson;
 
 import ajbc.webservice.rest.CatalogService.models.IOT_Thing;
 
+/**
+ * The Inventory have reports, in this class transmit reports of the IOT_Thing to server.
+ * the server is lessening and send back messages..
+ * @author Faraj
+ */
 public class InventoryReport implements Runnable 
 {
 	private IOT_Thing iot_thing;
